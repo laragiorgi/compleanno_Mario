@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MARIO #30 - GRAND PRIX CHAMPION</title>
+    <title>MARIO #30 - GRAND PRIX</title>
     <!-- Font Racing & Pixel -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Teko:wght@700&display=swap" rel="stylesheet">
     <!-- Canvas Confetti -->
@@ -27,7 +27,6 @@
 
         body {
             background-color: var(--dark-asphalt);
-            /* Sfondo asfalto racing + Borchie LEGO */
             background-image: 
                 radial-gradient(circle, rgba(255, 213, 0, 0.15) 20%, transparent 20%),
                 linear-gradient(45deg, #181820 25%, transparent 25%, transparent 75%, #181820 75%, #181820),
@@ -42,22 +41,23 @@
             align-items: center;
             overflow-x: hidden;
             padding: 20px;
+            cursor: pointer;
         }
 
-        /* Container Card Stile Biglietto Box F1 */
+        /* Container Card */
         .card-container {
             width: 100%;
             max-width: 850px;
             background: linear-gradient(135deg, #1f1f28 0%, #111116 100%);
             border: 6px solid var(--ferrari-red);
             border-radius: 20px;
-            box-shadow: 0 0 30px rgba(227, 0, 11, 0.5), inset 0 0 15px rgba(255, 213, 0, 0.2);
+            box-shadow: 0 0 40px rgba(227, 0, 11, 0.7), inset 0 0 20px rgba(255, 213, 0, 0.3);
             position: relative;
-            padding: 40px 30px;
+            padding: 50px 30px;
             text-align: center;
         }
 
-        /* Pattern Chequered Flag (Bandiera a Scacchi) ai bordi */
+        /* Pattern Bandiera a Scacchi */
         .card-container::before {
             content: '';
             position: absolute;
@@ -73,13 +73,12 @@
             border-radius: 12px 12px 0 0;
         }
 
-        /* Header LEGO F1 */
         .badge-f1 {
             display: inline-block;
             background: var(--lego-yellow);
             color: var(--dark-asphalt);
             font-family: 'Teko', sans-serif;
-            font-size: 1.8rem;
+            font-size: 2rem;
             letter-spacing: 3px;
             padding: 4px 25px;
             border-radius: 6px;
@@ -90,7 +89,7 @@
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 3.2rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--pure-white);
@@ -99,7 +98,7 @@
         }
 
         .age-badge {
-            font-size: 6rem;
+            font-size: 6.5rem;
             font-family: 'Teko', sans-serif;
             line-height: 0.9;
             color: var(--lego-yellow);
@@ -114,7 +113,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
-            margin: 30px 0;
+            margin-top: 35px;
         }
 
         .telemetry-card {
@@ -138,74 +137,6 @@
             font-weight: 900;
             margin-top: 5px;
         }
-
-        /* Pulsanti d'Azione */
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 25px;
-        }
-
-        .btn-action {
-            background: var(--ferrari-red);
-            color: var(--pure-white);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 900;
-            padding: 18px 32px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: 0 6px 0 #900007, 0 10px 20px rgba(0,0,0,0.5);
-            transition: all 0.1s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .btn-action:hover {
-            background: #ff1a25;
-            transform: translateY(-2px);
-        }
-
-        .btn-action:active {
-            transform: translateY(4px);
-            box-shadow: 0 2px 0 #900007;
-        }
-
-        .btn-yellow {
-            background: var(--lego-yellow);
-            color: var(--dark-asphalt);
-            box-shadow: 0 6px 0 #b39500, 0 10px 20px rgba(0,0,0,0.5);
-        }
-
-        .btn-yellow:hover {
-            background: #ffe033;
-        }
-
-        /* Banner Vittoria */
-        .victory-box {
-            display: none;
-            background: rgba(0, 255, 102, 0.1);
-            border: 2px solid var(--neon-green);
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 25px;
-            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        @keyframes popIn {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        footer {
-            margin-top: 30px;
-            font-size: 0.8rem;
-            color: #666;
-            letter-spacing: 1px;
-        }
     </style>
 </head>
 <body>
@@ -219,7 +150,7 @@
             <span class="age-badge">30 LAPS</span>
         </div>
 
-        <p style="color: #aaa; font-size: 1.1rem; letter-spacing: 1px;">
+        <p style="color: #aaa; font-size: 1.2rem; letter-spacing: 1px; margin-top: 10px;">
             FASTEST LAP RECORDED • P1 ON THE GRID
         </p>
 
@@ -227,7 +158,7 @@
         <div class="telemetry-grid">
             <div class="telemetry-card">
                 <div class="label">STATUS PILOTA</div>
-                <div class="value">P1 (LEGENDARY)</div>
+                <div class="value">P1 LEGENDARY</div>
             </div>
             <div class="telemetry-card">
                 <div class="label">GIRI COMPLETATI</div>
@@ -242,81 +173,10 @@
                 <div class="value">350+ KM/H</div>
             </div>
         </div>
-
-        <!-- Bottoni Interattivi -->
-        <div class="btn-group">
-            <button class="btn-action" onclick="pitStopExplosion()">💥 PIT STOP EXPLOSION</button>
-            <button class="btn-action btn-yellow" onclick="claimTrophy()">🏆 APRI CHAMPAGNE</button>
-        </div>
-
-        <!-- Box Vittoria -->
-        <div id="victoryBox" class="victory-box">
-            <h2 style="color: var(--neon-green); font-size: 1.8rem; margin-bottom: 8px;">🍾 PODIO E VITTORIA!</h2>
-            <p style="font-size: 1.1rem;">30 anni vissuti a tutto gas. Buon Compleanno Campione!</p>
-        </div>
-
-        <footer>
-            DESIGNED FOR MARIO • GITHUB EDITION
-        </footer>
     </div>
 
     <script>
-        // Esplosione di coriandoli stile Gran Premio (Rosso Ferrari, Giallo LEGO, Verde/Bianco)
-        function pitStopExplosion() {
-            // Suono Sintetizzato d'Impatto
-            playEngineSound();
-
-            var count = 250;
-            var defaults = {
-                origin: { y: 0.7 }
-            };
-
-            function fire(particleRatio, opts) {
-                confetti(Object.assign({}, defaults, opts, {
-                    particleCount: Math.floor(count * particleRatio)
-                }));
-            }
-
-            fire(0.25, { spread: 30, startVelocity: 60, colors: ['#E3000B', '#FFD500'] });
-            fire(0.2, { spread: 60, colors: ['#FFFFFF', '#00FF66'] });
-            fire(0.35, { spread: 100, decay: 0.91, scalar: 1.2, colors: ['#E3000B', '#FFD500', '#000000'] });
-            fire(0.1, { spread: 120, startVelocity: 35, decay: 0.92, scalar: 0.8 });
-            fire(0.1, { spread: 120, startVelocity: 55, colors: ['#FFD500', '#E3000B'] });
-        }
-
-        // Sblocco Podio e Champagne
-        function claimTrophy() {
-            var box = document.getElementById("victoryBox");
-            box.style.display = "block";
-            pitStopExplosion();
-            
-            // Fuochi continui a pioggia per 2 secondi
-            var duration = 2 * 1000;
-            var end = Date.now() + duration;
-
-            (function frame() {
-                confetti({
-                    particleCount: 5,
-                    angle: 60,
-                    spread: 55,
-                    origin: { x: 0 },
-                    colors: ['#E3000B', '#FFD500']
-                });
-                confetti({
-                    particleCount: 5,
-                    angle: 120,
-                    spread: 55,
-                    origin: { x: 1 },
-                    colors: ['#00FF66', '#FFFFFF']
-                });
-
-                if (Date.now() < end) {
-                    requestAnimationFrame(frame);
-                }
-            })();
-        }
-
-        // Effetto Audio Sintetizzato Senza File Esterni (Web Audio API)
+        // Suono Rombo di Motore Sintetizzato
         function playEngineSound() {
             try {
                 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -324,27 +184,70 @@
                 var gain = audioCtx.createGain();
                 
                 osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(120, audioCtx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(600, audioCtx.currentTime + 0.3);
-                osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.6);
+                osc.frequency.setValueAtTime(100, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(700, audioCtx.currentTime + 0.4);
+                osc.frequency.exponentialRampToValueAtTime(90, audioCtx.currentTime + 0.8);
                 
                 gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.6);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8);
                 
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
                 
                 osc.start();
-                osc.stop(audioCtx.currentTime + 0.6);
-            } catch(e) {
-                // Audio non supportato o bloccato
-            }
+                osc.stop(audioCtx.currentTime + 0.8);
+            } catch(e) {}
         }
 
-        // Lancio automatico all'apertura
+        // Esplosioni di Coriandoli Continue in Automatico
+        function startAutoExplosions() {
+            playEngineSound();
+
+            // Esplosione iniziale violenta
+            confetti({
+                particleCount: 180,
+                spread: 100,
+                origin: { y: 0.6 },
+                colors: ['#E3000B', '#FFD500', '#00FF66', '#FFFFFF']
+            });
+
+            // Esplosioni continue laterali automatiche a pioggia
+            var duration = 15 * 1000; // Dura 15 secondi all'apertura
+            var animationEnd = Date.now() + duration;
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                confetti({
+                    particleCount: 8,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0, y: 0.7 },
+                    colors: ['#E3000B', '#FFD500']
+                });
+                confetti({
+                    particleCount: 8,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1, y: 0.7 },
+                    colors: ['#00FF66', '#FFFFFF']
+                });
+            }, 250);
+        }
+
+        // Avvio automatico all'apertura della pagina
         window.onload = function() {
-            pitStopExplosion();
+            startAutoExplosions();
         };
+
+        // Se l'utente clicca in qualsiasi punto della schermata, riparte l'esplosione audio/visiva
+        document.body.addEventListener('click', function() {
+            startAutoExplosions();
+        });
     </script>
 </body>
 </html>
