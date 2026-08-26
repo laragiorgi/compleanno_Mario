@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Level 30 - Happy Birthday!</title>
+    <!-- Font Gaming/LEGO -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Fredoka+One&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        :root {
+            --lego-red: #E3000B;
+            --lego-yellow: #FFD500;
+            --lego-blue: #006CB7;
+            --lego-green: #009639;
+            --lego-dark: #1B1B1B;
+            --lego-shadow: rgba(0,0,0,0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--lego-yellow);
+            /* Sfondo a mattoncini LEGO */
+            background-image: 
+                radial-gradient(circle, #e5be00 30%, transparent 31%),
+                radial-gradient(circle, #e5be00 30%, transparent 31%);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            font-family: 'Fredoka One', cursive;
+            color: var(--lego-dark);
+            text-align: center;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Hero Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Banner Principale a mattoncino 3D */
+        .lego-card {
+            background: var(--lego-red);
+            border: 6px solid var(--lego-dark);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 12px 0 var(--lego-dark);
+            position: relative;
+            margin-bottom: 40px;
+            color: white;
+            text-shadow: 3px 3px 0 var(--lego-dark);
+        }
+
+        /* Studs LEGO sopra la card */
+        .lego-card::before {
+            content: '';
+            position: absolute;
+            top: -24px;
+            left: 10%;
+            width: 80%;
+            height: 20px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--lego-red),
+                var(--lego-red) 30px,
+                #b50008 30px,
+                #b50008 40px
+            );
+            border: 4px solid var(--lego-dark);
+            border-bottom: none;
+            border-radius: 6px 6px 0 0;
+        }
+
+        h1 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2.2rem;
+            line-height: 1.4;
+            color: var(--lego-yellow);
+            -webkit-text-stroke: 2px var(--lego-dark);
+            margin: 0 0 20px 0;
+        }
+
+        .badge-30 {
+            display: inline-block;
+            background: var(--lego-blue);
+            color: white;
+            font-size: 4rem;
+            padding: 10px 30px;
+            border-radius: 50px;
+            border: 6px solid var(--lego-dark);
+            box-shadow: 0 8px 0 var(--lego-dark);
+            transform: rotate(-3deg);
+            margin: 15px 0;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1) rotate(-3deg); }
+            100% { transform: scale(1.08) rotate(3deg); }
+        }
+
+        /* Bottoni d'Azione */
+        .btn-brick {
+            background: var(--lego-green);
+            color: white;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1rem;
+            padding: 20px 30px;
+            border: 4px solid var(--lego-dark);
+            border-radius: 8px;
+            box-shadow: 0 8px 0 var(--lego-dark);
+            cursor: pointer;
+            transition: all 0.1s ease;
+            margin: 15px;
+            display: inline-block;
+        }
+
+        .btn-brick:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 var(--lego-dark);
+        }
+
+        .btn-explode {
+            background: var(--lego-red);
+        }
+
+        /* Griglia Statistiche/Auguri */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-box {
+            background: white;
+            border: 4px solid var(--lego-dark);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 6px 0 var(--lego-dark);
+        }
+
+        .stat-box h3 {
+            margin: 0;
+            color: var(--lego-blue);
+            font-size: 1.2rem;
+        }
+
+        .stat-box p {
+            font-size: 1.5rem;
+            margin: 10px 0 0 0;
+            color: var(--lego-dark);
+        }
+
+        /* Regalo Nascosto */
+        .surprise-box {
+            display: none;
+            background: white;
+            border: 5px dashed var(--lego-blue);
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 30px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: var(--lego-dark);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Card Principale -->
+        <div class="lego-card">
+            <p style="font-size: 1.2rem; letter-spacing: 2px;">SYSTEM WARNING: LEVEL UP!</p>
+            <h1>BUON COMPLEANNO MARIO!</h1>
+            <div>
+                <span class="badge-30">30 ANNI</span>
+            </div>
+            <p style="font-size: 1.4rem; margin-top: 20px;">
+                Mattoncino dopo mattoncino, hai costruito 30 anni fantastici! 🧱🚀
+            </p>
+        </div>
+
+        <!-- Bottoni Interattivi -->
+        <div>
+            <button class="btn-brick btn-explode" onclick="explodeLego()">ESPLOSIONE LEGO! 💥</button>
+            <button class="btn-brick" onclick="unlockSurprise()">SBLOCCA PREMIO 🎁</button>
+        </div>
+
+        <!-- Box Sorpresa -->
+        <div id="surprise" class="surprise-box">
+            <h2 style="color: var(--lego-red); font-size: 2rem; margin: 0 0 10px 0;">🏆 OBIETTIVO SBLOCCATO!</h2>
+            <p style="font-size: 1.3rem;">"Master Builder di Livello 30"</p>
+            <p>Hai sbloccato l'accesso ufficiale alla categoria <b>V.I.P. (Vecchietto In Preparazione)</b>!</p>
+            <p style="font-size: 2rem;">🍻🎂🎉</p>
+        </div>
+
+        <!-- Statistiche dei 30 Anni -->
+        <div class="stats-grid">
+            <div class="stat-box">
+                <h3>GIORNI VISSUTI</h3>
+                <p>10.957</p>
+            </div>
+            <div class="stat-box">
+                <h3>MATTONCINI USATI</h3>
+                <p>999.999+</p>
+            </div>
+            <div class="stat-box">
+                <h3>LIVELLO ATTUALE</h3>
+                <p>30 🌟</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Creato con ❤️ (e tantissimi mattoncini) per il 30° di Mario.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Effetto Esplosione di Coriandoli LEGO al caricamento della pagina
+        window.onload = function() {
+            triggerConfetti();
+        };
+
+        function triggerConfetti() {
+            // Coriandoli con i colori iconici LEGO
+            confetti({
+                particleCount: 120,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#E3000B', '#FFD500', '#006CB7', '#009639', '#FFFFFF']
+            });
+        }
+
+        // Esplosione Continua / Custom
+        function explodeLego() {
+            var count = 200;
+            var defaults = {
+                origin: { y: 0.7 },
+                colors: ['#E3000B', '#FFD500', '#006CB7', '#009639']
+            };
+
+            function fire(particleRatio, opts) {
+                confetti(Object.assign({}, defaults, opts, {
+                    particleCount: Math.floor(count * particleRatio)
+                }));
+            }
+
+            fire(0.25, { spread: 26, startVelocity: 55 });
+            fire(0.2, { spread: 60 });
+            fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+            fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+            fire(0.1, { spread: 120, startVelocity: 45 });
+        }
+
+        // Sblocca il messaggio sorpresa
+        function unlockSurprise() {
+            var box = document.getElementById("surprise");
+            box.style.display = "block";
+            explodeLego();
+            box.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
